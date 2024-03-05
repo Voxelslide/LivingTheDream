@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 public class ItemSlot : MonoBehaviour, IDropHandler
 {
 
+	public Item heldItem;
+	
 	private void Awake()
 	{
 		transform.SetAsFirstSibling();
@@ -16,7 +18,18 @@ public class ItemSlot : MonoBehaviour, IDropHandler
 		Debug.Log("OnDrop");
 		if(eventData.pointerDrag != null)
 		{
-			eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+			if (heldItem == null)
+			{
+				eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+				heldItem = eventData.pointerDrag.GetComponent<Item>();
+				heldItem.itemSlot = this;
+			}
+			else
+			{
+				eventData.pointerDrag.GetComponent<Item>().ReturnToPrevLoc();
+			}
+
+
 		}
 	}
 
