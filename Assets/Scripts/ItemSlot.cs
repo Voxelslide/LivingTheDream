@@ -6,8 +6,19 @@ using UnityEngine.EventSystems;
 public class ItemSlot : MonoBehaviour, IDropHandler
 {
 
-	public Item heldItem;
+	public GameObject heldItem;
 	
+	public void AddItem(GameObject newItem)
+	{
+		heldItem = newItem;
+		heldItem.GetComponent<Item>().itemSlot = this;
+		heldItem.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+	}
+
+
+
+
+
 	private void Awake()
 	{
 		transform.SetAsFirstSibling();
@@ -16,6 +27,10 @@ public class ItemSlot : MonoBehaviour, IDropHandler
 	public void OnDrop(PointerEventData eventData)
 	{
 		Debug.Log("OnDrop");
+		
+		
+		//Getting refactored, you can't drag and drop items into the inventory, they'll immediately get added on creation.
+		/*
 		if(eventData.pointerDrag != null)
 		{
 			if (heldItem == null)
@@ -29,8 +44,8 @@ public class ItemSlot : MonoBehaviour, IDropHandler
 				eventData.pointerDrag.GetComponent<Item>().ReturnToPrevLoc();
 			}
 
-
 		}
+		*/
 	}
 
 

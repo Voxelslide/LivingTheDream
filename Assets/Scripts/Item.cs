@@ -11,7 +11,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
 	[SerializeField]
 	public string itemName;
 	[SerializeField]
-	private Image image;
+	private Sprite image;
 
 	public ItemSlot itemSlot;
 
@@ -19,6 +19,11 @@ public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
 	public CanvasGroup canvasGroup;
 
 	private Vector3 previousLocation;
+
+
+	
+
+
 
 
 	public void Awake()
@@ -36,13 +41,6 @@ public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
 	{
 		canvasGroup.alpha = 0.6f;
 		canvasGroup.blocksRaycasts = false;
-
-		if(itemSlot != null)
-		{
-			itemSlot.heldItem = null;
-			itemSlot = null;
-		}
-
 		previousLocation = gameObject.transform.position;
 	}
 
@@ -53,8 +51,10 @@ public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
 
 	public void OnEndDrag(PointerEventData eventData)
 	{
+		Debug.Log("EndDrag");
 		canvasGroup.alpha = 1f;
 		canvasGroup.blocksRaycasts = true;
+		this.ReturnToPrevLoc();
 	}
 
 
@@ -64,7 +64,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
 		Debug.Log("OnDrop");
 		if (eventData.pointerDrag != null)
 		{
-				eventData.pointerDrag.GetComponent<Item>().ReturnToPrevLoc();
+				//eventData.pointerDrag.GetComponent<Item>().ReturnToPrevLoc();
 		}
 	}
 

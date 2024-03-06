@@ -20,9 +20,9 @@ public class Target : MonoBehaviour, IPointerDownHandler
 	[SerializeField]
 	bool isDropTarget;
 	[SerializeField]
-	bool givesItem;
+	GameObject desiredItem;
 	[SerializeField]
-	Item itemToGive;
+	bool givesItem;
 	[SerializeField]
 	bool destroyOnDrop;
 	[SerializeField]
@@ -33,17 +33,18 @@ public class Target : MonoBehaviour, IPointerDownHandler
 	[SerializeField]
 	string popupMessage;
 
-
+	[SerializeField]
+	public GameObject itemToDrop;
 
 	public void OnPointerDown(PointerEventData eventData)
 	{
 		Debug.Log(popupMessage);
-		if(this.givesItem == true && this.itemGiven == false)
+		if(givesItem == true && itemGiven == false && isDropTarget == false)
 		{
-			this.GiveItem();
+			GiveItem();
 		}
 
-		if (this.destroyOnClick)
+		if (destroyOnClick)
 		{
 			//gameObject.destroy()   or something
 		}
@@ -52,18 +53,55 @@ public class Target : MonoBehaviour, IPointerDownHandler
 
 	}
 
+	public void OnDrop(PointerEventData eventData)
+	{
+		Debug.Log("OnDrop");
+		if (eventData.pointerDrag != null)
+		{
+			Debug.Log(popupMessage);
+			if (givesItem == true && itemGiven == false)
+			{
+				if(eventData.pointerDrag == desiredItem)
+				{
+					GiveItem();
+				}
+			}
+
+			/*
+			if (destroyOnDrop)
+			{
+				gameObject.destroy()   or something
+			}
+			*/
+		
+		
+		}
+	}
+
+
+
+
 	private void GiveItem()
 	{
-		//instantiate a new item using Item itemToGive
+		if (itemGiven == false)
+		{
+			//Get inventory
+			Inventory inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
 
-		//add it to the inventory
+			//Get canvas
+			
 
 
+			//instantiate a new item using Item itemToGive
+			//The target will be given its specifc item prefab in the editor, no fancy constructor stuff
+			GameObject newItem = Instantiate(itemToDrop, gameObject.transform.parent);
+			newItem.transform.SetAsLastSibling();
 
-
-
-
-		itemGiven = true;
+			//add it to the inventory
+			inventory.AddItem(newItem);
+	
+			itemGiven = true;
+		}
 	}
 
 
