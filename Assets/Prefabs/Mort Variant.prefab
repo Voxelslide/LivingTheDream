@@ -95,6 +95,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 414ceda5b6b597d43a310272174e855a, type: 3}
+    - target: {fileID: 912508282690546643, guid: 1df7c325c34cb924191797e15e3a96cf, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 912508282690546645, guid: 1df7c325c34cb924191797e15e3a96cf, type: 3}
       propertyPath: m_Name
       value: Mort Variant

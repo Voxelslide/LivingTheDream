@@ -95,6 +95,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 4b8788b244c296645a823cef34ede1d3, type: 3}
+    - target: {fileID: 912508282690546643, guid: 1df7c325c34cb924191797e15e3a96cf, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 912508282690546643, guid: 1df7c325c34cb924191797e15e3a96cf, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 912508282690546645, guid: 1df7c325c34cb924191797e15e3a96cf, type: 3}
       propertyPath: m_Name
       value: Turtwig Variant

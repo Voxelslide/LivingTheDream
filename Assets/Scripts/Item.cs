@@ -17,6 +17,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
 
 	public RectTransform rectTransform;
 	public CanvasGroup canvasGroup;
+	private Canvas canvas;
 
 	private Vector3 previousLocation;
 
@@ -30,6 +31,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
 	{
 		rectTransform = GetComponent<RectTransform>();
 		canvasGroup = GetComponent<CanvasGroup>();
+		canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
 	}
 
 	public void OnPointerDown(PointerEventData eventData)
@@ -46,7 +48,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
 
 	public void OnDrag(PointerEventData eventData)
 	{
-		rectTransform.anchoredPosition += eventData.delta;
+		rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
 	}
 
 	public void OnEndDrag(PointerEventData eventData)
