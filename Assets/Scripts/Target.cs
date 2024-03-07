@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Target : MonoBehaviour, IPointerDownHandler
+public class Target : MonoBehaviour, IPointerDownHandler, IDropHandler
 {
 
 	/*
@@ -20,7 +20,7 @@ public class Target : MonoBehaviour, IPointerDownHandler
 	[SerializeField]
 	bool isDropTarget;
 	[SerializeField]
-	GameObject desiredItem;
+	public GameObject desiredItem;
 	[SerializeField]
 	bool givesItem;
 	[SerializeField]
@@ -48,31 +48,29 @@ public class Target : MonoBehaviour, IPointerDownHandler
 		{
 			//gameObject.destroy()   or something
 		}
-
-
-
 	}
 
 	public void OnDrop(PointerEventData eventData)
 	{
-		Debug.Log("OnDrop");
 		if (eventData.pointerDrag != null)
 		{
 			Debug.Log(popupMessage);
-			if (givesItem == true && itemGiven == false)
+
+			if (givesItem && itemGiven == false && isDropTarget)
 			{
-				if(eventData.pointerDrag == desiredItem)
+				if(eventData.pointerDrag.GetComponent<Item>().itemName == desiredItem.GetComponent<Item>().itemName)
 				{
+					Debug.Log("Giving item...");
 					GiveItem();
 				}
 			}
 
-			/*
+			
 			if (destroyOnDrop)
 			{
-				gameObject.destroy()   or something
+				Destroy(gameObject);
 			}
-			*/
+			
 		
 		
 		}
@@ -88,17 +86,14 @@ public class Target : MonoBehaviour, IPointerDownHandler
 			//Get inventory
 			Inventory inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
 
-			//Get canvas
-			
-
-
 			//instantiate a new item using Item itemToGive
 			//The target will be given its specifc item prefab in the editor, no fancy constructor stuff
-			GameObject newItem = Instantiate(itemToDrop, gameObject.transform.parent);
+			GameObject newItem = Instantiate(this.itemToDrop, gameObject.transform.parent);
 			newItem.transform.SetAsLastSibling();
 
 			//add it to the inventory
 			inventory.AddItem(newItem);
+			Debug.Log("Adding " + newItem.name + " to inventory.");
 	
 			itemGiven = true;
 		}

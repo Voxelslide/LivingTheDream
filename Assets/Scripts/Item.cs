@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 
 //Drag and drop functionality using tutorial https://www.youtube.com/watch?v=BGr-7GZJNXg
-public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler    //Drop most likely won't be a part of the item anymore
+public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
 	[SerializeField]
 	public string itemName;
@@ -51,7 +51,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
 
 	public void OnEndDrag(PointerEventData eventData)
 	{
-		Debug.Log("EndDrag");
+		//Debug.Log("EndDrag");
 		canvasGroup.alpha = 1f;
 		canvasGroup.blocksRaycasts = true;
 		this.ReturnToPrevLoc();
@@ -61,7 +61,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
 
 	public void OnDrop(PointerEventData eventData)
 	{
-		Debug.Log("OnDrop");
+		//Debug.Log("OnDrop");
 		if (eventData.pointerDrag != null)
 		{
 				//eventData.pointerDrag.GetComponent<Item>().ReturnToPrevLoc();
@@ -72,7 +72,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
 	{
 		gameObject.transform.position = previousLocation;
 		
-		Debug.Log(itemName + " previousLocation  == " + previousLocation);
+		//Debug.Log(itemName + " previousLocation  == " + previousLocation);
 	}
 
 

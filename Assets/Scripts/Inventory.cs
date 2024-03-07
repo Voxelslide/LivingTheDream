@@ -26,6 +26,8 @@ public class Inventory : MonoBehaviour
     
   public void AddItem(GameObject itemToAdd)
 	{
+    Debug.Log("Recieving " + itemToAdd.name);
+
 		if (!inventory.Contains<GameObject>(itemToAdd))
 		{
       inventory.Add(itemToAdd);

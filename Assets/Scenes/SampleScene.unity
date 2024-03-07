@@ -217,9 +217,9 @@ RectTransform:
   m_Children:
   - {fileID: 596194548}
   - {fileID: 675341138}
+  - {fileID: 1123178483}
   - {fileID: 1641287778}
   - {fileID: 545602264}
-  - {fileID: 1123178483}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -598,7 +598,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 71, y: 158}
+  m_AnchoredPosition: {x: 0, y: 200}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &675341139
@@ -652,12 +652,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDropTarget: 0
-  desiredDropItem: {fileID: 0}
+  desiredItem: {fileID: 0}
   givesItem: 1
   destroyOnDrop: 0
   destroyOnClick: 0
   popupMessage: TARGET CLICKED :D
-  itemPrefab: {fileID: 5191496010360572605, guid: db1a32be42b1e254b803aa5f45a11bb7, type: 3}
+  itemToDrop: {fileID: 5191496010360572605, guid: db1a32be42b1e254b803aa5f45a11bb7, type: 3}
 --- !u!224 &910161894 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7328486500799472398, guid: 1427a18e0bc56464c93ebecdc4c6b9f2, type: 3}
@@ -732,13 +732,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 24761413}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 294, y: 158}
+  m_AnchoredPosition: {x: 200, y: 200}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.49999994, y: 0.5000001}
 --- !u!114 &1123178484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -752,12 +752,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDropTarget: 1
-  desiredDropItem: {fileID: 5191496010360572605, guid: db1a32be42b1e254b803aa5f45a11bb7, type: 3}
+  desiredItem: {fileID: 5191496010360572605, guid: db1a32be42b1e254b803aa5f45a11bb7, type: 3}
   givesItem: 1
-  destroyOnDrop: 0
+  destroyOnDrop: 1
   destroyOnClick: 0
-  popupMessage: TARGET1 CLICKED :D
-  itemPrefab: {fileID: 3341518583216260951, guid: 575cdcc3c9baeeb40b2667339ee67efc, type: 3}
+  popupMessage: TARGET1
+  itemToDrop: {fileID: 3341518583216260951, guid: 575cdcc3c9baeeb40b2667339ee67efc, type: 3}
 --- !u!114 &1123178485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -828,7 +828,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 24761413}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -945,12 +945,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDropTarget: 0
-  desiredDropItem: {fileID: 0}
+  desiredItem: {fileID: 0}
   givesItem: 0
   destroyOnDrop: 0
   destroyOnClick: 0
   popupMessage: You clicked on text!
-  itemPrefab: {fileID: 0}
+  itemToDrop: {fileID: 0}
 --- !u!1001 &1931880685
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1198,7 +1198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3341518583216260944, guid: 575cdcc3c9baeeb40b2667339ee67efc, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3341518583216260944, guid: 575cdcc3c9baeeb40b2667339ee67efc, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1254,11 +1254,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3341518583216260944, guid: 575cdcc3c9baeeb40b2667339ee67efc, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -121.65115
+      value: -221
       objectReference: {fileID: 0}
     - target: {fileID: 3341518583216260944, guid: 575cdcc3c9baeeb40b2667339ee67efc, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 191
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 3341518583216260944, guid: 575cdcc3c9baeeb40b2667339ee67efc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
