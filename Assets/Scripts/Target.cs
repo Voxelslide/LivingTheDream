@@ -32,6 +32,9 @@ public class Target : MonoBehaviour, IPointerDownHandler, IDropHandler
 
 	[SerializeField]
 	string popupMessage;
+	[SerializeField]
+	string buttonMessage;
+
 
 	[SerializeField]
 	public GameObject itemToDrop;
@@ -96,6 +99,11 @@ public class Target : MonoBehaviour, IPointerDownHandler, IDropHandler
 			Debug.Log("Adding " + newItem.name + " to inventory.");
 	
 			itemGiven = true;
+
+
+			Popup.Instance.ShowPopup(popupMessage, buttonMessage, () => {/* nothing here bc it hides itself*/ });
+
+
 		}
 	}
 
