@@ -30,10 +30,25 @@ public class Target : MonoBehaviour, IPointerDownHandler, IDropHandler
 
 	private bool itemGiven = false;
 
+
+
+
 	[SerializeField]
-	string popupMessage;
+	bool clickMessage;
 	[SerializeField]
-	string buttonMessage;
+	string clickPopupMessage;
+	[SerializeField]
+	string clickButtonMessage;
+
+
+	[SerializeField]
+	bool desiredDropMessage;
+	[SerializeField]
+	string desiredDropPopupMessage;
+	[SerializeField]
+	string desiredDropButtonMessage;
+
+	//make logic for when you drop the wrong thing on a target
 
 
 	[SerializeField]
@@ -41,10 +56,15 @@ public class Target : MonoBehaviour, IPointerDownHandler, IDropHandler
 
 	public void OnPointerDown(PointerEventData eventData)
 	{
-		Debug.Log(popupMessage);
+		Debug.Log(clickPopupMessage);
 		if(givesItem == true && itemGiven == false && isDropTarget == false)
 		{
 			GiveItem();
+		}
+
+		if (clickMessage)
+		{
+			Popup.Instance.ShowPopup(clickPopupMessage, clickButtonMessage, () => { });
 		}
 
 		if (destroyOnClick)
@@ -57,15 +77,16 @@ public class Target : MonoBehaviour, IPointerDownHandler, IDropHandler
 	{
 		if (eventData.pointerDrag != null)
 		{
-			Debug.Log(popupMessage);
+			//Debug.Log(dropPopupMessage);
 
-			if (givesItem && itemGiven == false && isDropTarget)
+			if(eventData.pointerDrag.GetComponent<Item>().itemName == desiredItem.GetComponent<Item>().itemName)
 			{
-				if(eventData.pointerDrag.GetComponent<Item>().itemName == desiredItem.GetComponent<Item>().itemName)
+				if (givesItem && itemGiven == false && isDropTarget)
 				{
 					Debug.Log("Giving item...");
 					GiveItem();
 				}
+				Popup.Instance.ShowPopup(desiredDropPopupMessage, desiredDropButtonMessage, () => { });
 			}
 
 			
@@ -99,11 +120,6 @@ public class Target : MonoBehaviour, IPointerDownHandler, IDropHandler
 			Debug.Log("Adding " + newItem.name + " to inventory.");
 	
 			itemGiven = true;
-
-
-			Popup.Instance.ShowPopup(popupMessage, buttonMessage, () => {/* nothing here bc it hides itself*/ });
-
-
 		}
 	}
 

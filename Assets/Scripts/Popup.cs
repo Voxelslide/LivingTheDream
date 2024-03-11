@@ -18,7 +18,7 @@ public class Popup : MonoBehaviour
   private RectTransform btnRectTransform;
 
   private Vector2 bgTextPadding = new Vector2(10, 10);
-  private Vector2 btnTextPadding = new Vector2(40, 3);
+  private Vector2 btnTextPadding = new Vector2(40, 5);
 
   // Update is called once per frame
   void Awake()
@@ -32,7 +32,7 @@ public class Popup : MonoBehaviour
     btnRectTransform = btn.GetComponent<RectTransform>();
 
 
-    ShowPopup("This is an example of what a popup can do. \nThis tutorial sure was helpful. \nWonder how it handles vertical resizing... \n?", "WOW!", () =>
+    ShowPopup("Looking around, you can't grasp onto anything that makes sense.", "Huh...", () =>
       {
         Debug.Log("BUTTON PRESSED");
       });
