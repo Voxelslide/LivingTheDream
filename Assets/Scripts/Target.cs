@@ -7,71 +7,83 @@ using UnityEngine.EventSystems;
 public class Target : MonoBehaviour, IPointerDownHandler, IDropHandler
 {
 
-	/*
-	 * All targets are click targets, only some are drop targets
-	 * 2 types of targets:
-	 *	Click target- when this target is clicked on, shows popup and maybe gives an item
-	 *	Drop target- when this target is clicked on, shows popup && when item is dropped on this target, shows popup and if the item is the right one, gives an item
-	 *	
-	 *	Every target shows a popup when it is interacted with, (usually "That won't work" or something clever, not necesarily a game progressing move every time)
-	 *	
-	*/
+	TargetMessages TM = new TargetMessages();
 
+
+	[SerializeField]
+	string targetName;
 	[SerializeField]
 	bool isDropTarget;
 	[SerializeField]
 	public GameObject desiredItem;
 	[SerializeField]
 	bool givesItem;
-	[SerializeField]
-	bool destroyOnDrop;
-	[SerializeField]
-	bool destroyOnClick;
 
 	private bool itemGiven = false;
-
-
-
-
-	[SerializeField]
-	bool clickMessage;
-	[SerializeField]
-	string clickPopupMessage;
-	[SerializeField]
-	string clickButtonMessage;
-
-
-	[SerializeField]
-	bool desiredDropMessage;
-	[SerializeField]
-	string desiredDropPopupMessage;
-	[SerializeField]
-	string desiredDropButtonMessage;
-
-	//make logic for when you drop the wrong thing on a target
 
 
 	[SerializeField]
 	public GameObject itemToDrop;
 
+	/*
+ TARGETS
+Dumpster          -Dumpster
+Trash bag					-TB
+Poster						-Post
+Sign							-ESign
+Excuse Thumbnail	-EThumb
+Excuse This Tall	-ETall
+Excuse Talent			-ETalent
+Puddle						-Pud
+Alley							-All
+
+
+ */
+
 	public void OnPointerDown(PointerEventData eventData)
 	{
-		Debug.Log(clickPopupMessage);
 		if(givesItem == true && itemGiven == false && isDropTarget == false)
 		{
 			GiveItem();
 		}
+		
+		string clickMessage = "";
+		string clickButtonMessage = "";
 
-		if (clickMessage)
+		if (targetName == "Dumpster")
 		{
-			Popup.Instance.ShowPopup(clickPopupMessage, clickButtonMessage, () => { });
+			clickMessage = TM.dumpster["Click"];
+			clickButtonMessage = TM.dumpster["ClickB"];
+		} else if (targetName == "TB") {
+			clickMessage = TM.TB["Click"];
+			clickButtonMessage = TM.TB["ClickB"];
+		} else if (targetName == "Post") {
+			clickMessage = TM.Post["Click"];
+			clickButtonMessage = TM.Post["ClickB"];
+		} else if (targetName == "ESign") {
+			clickMessage = TM.ESign["Click"];
+			clickButtonMessage = TM.ESign["ClickB"];
+		} else if (targetName == "EThumb") {
+			clickMessage = TM.EThumb["Click"];
+			clickButtonMessage = TM.EThumb["ClickB"];
+		}	else if (targetName == "ETall") {
+			clickMessage = TM.ETall["Click"];
+			clickButtonMessage = TM.ETall["ClickB"];
+		}	else if (targetName == "ETalent") {
+			clickMessage = TM.ETalent["Click"];
+			clickButtonMessage = TM.ETalent["ClickB"];
+		} else if (targetName == "Pud")	{
+			clickMessage = TM.Pud["Click"];
+			clickButtonMessage = TM.Pud["ClickB"];
+		} else if (targetName == "All")	{
+			clickMessage = TM.All["Click"];
+			clickButtonMessage = TM.All["ClickB"];
 		}
 
-		if (destroyOnClick)
-		{
-			//gameObject.destroy()   or something
-		}
+		Popup.Instance.ShowPopup(clickMessage, clickButtonMessage, () => { });
+		
 	}
+
 
 	public void OnDrop(PointerEventData eventData)
 	{
@@ -86,19 +98,97 @@ public class Target : MonoBehaviour, IPointerDownHandler, IDropHandler
 					Debug.Log("Giving item...");
 					GiveItem();
 				}
-				Popup.Instance.ShowPopup(desiredDropPopupMessage, desiredDropButtonMessage, () => { });
+
+				
+
+
+
+
 			}
 
-			
-			if (destroyOnDrop)
+
+			string dropMessage = "";
+			string dropButtonMessage = "";
+
+			if (targetName == "Dumpster")
 			{
-				Destroy(gameObject);
+				dropMessage = TM.dumpster["Click"];
+				dropButtonMessage = TM.dumpster["ClickB"];
 			}
-			
-		
-		
+			else if (targetName == "TB")
+			{
+				dropMessage = TM.TB["Click"];
+				dropButtonMessage = TM.TB["ClickB"];
+			}
+			else if (targetName == "Post")
+			{
+				dropMessage = TM.Post["Click"];
+				dropButtonMessage = TM.Post["ClickB"];
+			}
+			else if (targetName == "ESign")
+			{
+				dropMessage = TM.ESign["Click"];
+				dropButtonMessage = TM.ESign["ClickB"];
+			}
+			else if (targetName == "EThumb")
+			{
+				dropMessage = TM.EThumb["Click"];
+				dropButtonMessage = TM.EThumb["ClickB"];
+			}
+			else if (targetName == "ETall")
+			{
+				dropMessage = TM.ETall["Click"];
+				dropButtonMessage = TM.ETall["ClickB"];
+			}
+			else if (targetName == "ETalent")
+			{
+				dropMessage = TM.ETalent["Click"];
+				dropButtonMessage = TM.ETalent["ClickB"];
+			}
+			else if (targetName == "Pud")
+			{
+				dropMessage = TM.Pud["Click"];
+				dropButtonMessage = TM.Pud["ClickB"];
+			}
+			else if (targetName == "All")
+			{
+				dropMessage = TM.All["Click"];
+				dropButtonMessage = TM.All["ClickB"];
+			}
+
+			Popup.Instance.ShowPopup(dropMessage, dropButtonMessage, () => { });
+
 		}
 	}
+
+
+
+	/*
+	 
+	 		if (targetName == "Dumpster")
+		{
+			
+		} else if (targetName == "TB") {
+
+		} else if (targetName == "Post") {
+
+		} else if (targetName == "ESign") {
+
+		} else if (targetName == "EThumb") {
+
+		}	else if (targetName == "ETall") {
+
+		}	else if (targetName == "ETalent") {
+
+		} else if (targetName == "Pud")	{
+
+		} else if (targetName == "All")	{
+
+		}
+	 
+	 */
+
+
 
 
 
