@@ -188,7 +188,7 @@ public class TargetMessages : MonoBehaviour
 		All.Add("Det", "You step forward and hold your ground. Looking into the alleyway, you are able to see a bright light at the end of it.");
 		All.Add("DetB", "You still lack something.");
 
-		All.Add("Con", "You step towards the alleyway, dreams in hand, motivated, determined, and confident. You reach out towards the light, and it materializes as a glowing bead in your hand.");
+		All.Add("Con", "You step towards the alleyway, dreams in hand, motivated, determined, and confident. You reach out towards the light, and it materializes as a glowing bead in your hand. You grasp it.");
 		All.Add("ConB", "Aberrate from what is easy.\nWAKE UP");
 
 	}

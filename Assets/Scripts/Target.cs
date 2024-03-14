@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class Target : MonoBehaviour, IPointerDownHandler, IDropHandler
 {
@@ -155,7 +156,10 @@ Alley							-All
 
 			if(targetName == "All" && itemName == "Con")
 			{
-
+				Popup.Instance.ShowPopup(dropMessage, dropButtonMessage, () => {
+					SceneManager.LoadScene("EndScene");
+				
+				});
 			}
 			else
 			{
