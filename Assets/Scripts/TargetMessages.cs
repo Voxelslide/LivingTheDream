@@ -6,6 +6,8 @@ using System.Collections.Generic;
 public class TargetMessages : MonoBehaviour
 {
 
+
+	public static TargetMessages TM { get; private set; }
 	//Dumpster -> Hopes/Dreams/Creativity -> Poster -> Motivation -> Excuses -> Determination -> Puddle -> Confidence -> Alley -> WakeUP -> Win
 	//Target  		Item											 Target    Item					 Target			Item						Target		 Item					 Target		Textbox   Win
 
@@ -63,7 +65,7 @@ public class TargetMessages : MonoBehaviour
 		dumpster.Add("Mot", "Tempting, but I can't throw away my motivation now.");
 		dumpster.Add("MotB", "Keep going.");
 
-		dumpster.Add("DetB", "No, I won't give up.");
+		dumpster.Add("Det", "No, I won't give up.");
 		dumpster.Add("DetB", "Keep pushing forward.");
 
 		dumpster.Add("Con", "There's no way I could toss this!");
@@ -78,7 +80,7 @@ public class TargetMessages : MonoBehaviour
 		TB.Add("Mot", "A little more motivation could've saved these dreams.");
 		TB.Add("MotB", "A shame...");
 
-		TB.Add("DetB", "These thrown away dreams are what happens when you always take the easy route.");
+		TB.Add("Det", "These thrown away dreams are what happens when you always take the easy route.");
 		TB.Add("DetB", "Keep moving forward.");
 
 		TB.Add("Con", "Dreams shouldn't end up like this.");
@@ -93,7 +95,7 @@ public class TargetMessages : MonoBehaviour
 		Post.Add("Mot", "I can do this myself.");
 		Post.Add("MotB", "Thank you very much.");
 
-		Post.Add("DetB", "I don't need a robot to make things for me.");
+		Post.Add("Det", "I don't need a robot to make things for me.");
 		Post.Add("DetB", "I'll make things myself.");
 
 		Post.Add("Con", "Even if it's not perfect, I'd rather accomplish things myself.");
@@ -102,16 +104,16 @@ public class TargetMessages : MonoBehaviour
 		ESign.Add("Click", "It's a sign that reads:\n\"EXCUSES\".");
 		ESign.Add("ClickB", "Huh.");
 
-		ESign.Add("HD", "It's a sign that reads: EXCUSES.");
+		ESign.Add("HD", "It's a sign that reads:\n\"EXCUSES\".");
 		ESign.Add("HDB", "Huh.");
 
-		ESign.Add("Mot", "It's a sign that reads: EXCUSES.");
+		ESign.Add("Mot", "It's a sign that reads:\n\"EXCUSES\".");
 		ESign.Add("MotB", "Huh.");
 
-		ESign.Add("DetB", "It's a sign that reads: EXCUSES.");
+		ESign.Add("Det", "It's a sign that reads:\n\"EXCUSES\".");
 		ESign.Add("DetB", "Huh.");
 
-		ESign.Add("Con", "It's a sign that reads: EXCUSES.");
+		ESign.Add("Con", "It's a sign that reads:\n\"EXCUSES\".");
 		ESign.Add("ConB", "Huh.");
 				////////////////////////////
 		EThumb.Add("Click", "The caption of this image reads:\n\"Why not take the easy route and just watch what other people have made?\"");
@@ -123,7 +125,7 @@ public class TargetMessages : MonoBehaviour
 		EThumb.Add("Mot", "Sounds like procrastination to me.");
 		EThumb.Add("MotB", "Not today.");
 
-		EThumb.Add("DetB", "I won't waste my time with this.");
+		EThumb.Add("Det", "I won't waste my time with this.");
 		EThumb.Add("DetB", "Keep going.");
 
 		EThumb.Add("Con", "I don't want to drown out my doubts with this slop. I can face things myself.");
@@ -138,7 +140,7 @@ public class TargetMessages : MonoBehaviour
 		ETall.Add("Mot", "No... It doesn't matter how smart I am now. If I never start, then I'll never realize my goals.");
 		ETall.Add("MotB", "I'll put in the work.");
 
-		ETall.Add("DetB", "That sign won't stop me, because I can't read!");
+		ETall.Add("Det", "That sign won't stop me, because I can't read!");
 		ETall.Add("DetB", "Hehe...");
 
 		ETall.Add("Con", "I'm way smarter than this sign!");
@@ -153,7 +155,7 @@ public class TargetMessages : MonoBehaviour
 		ETalent.Add("Mot", "The painting is no longer discouraging, it's inspiring!");
 		ETalent.Add("MotB", "Keep going.");
 
-		ETalent.Add("DetB", "As long as I keep working, I can be as good as the person who made this painting.");
+		ETalent.Add("Det", "As long as I keep working, I can be as good as the person who made this painting.");
 		ETalent.Add("DetB", "Gotta keep going.");
 
 		ETalent.Add("Con", "I don't need to be as \"Talented\" as this artist to be proud of what I've made.");
@@ -168,7 +170,7 @@ public class TargetMessages : MonoBehaviour
 		Pud.Add("Mot", "Looking into the puddle, your reflection speaks slowly to you:\n\"What are you gonna do now? Take the easy way out again?\"");
 		Pud.Add("MotB", "\"Not this time. Trust me.\"");
 
-		Pud.Add("DetB", "Looking into the puddle, your reflection confesses to you:\n\"Sorry for giving you a hard time, I trust you now to finish what you started.\"");
+		Pud.Add("Det", "Looking into the puddle, your reflection confesses to you:\n\"Sorry for giving you a hard time, I trust you now to finish what you started.\"");
 		Pud.Add("DetB", "\"Thanks.\"");
 
 		Pud.Add("Con", "Looking into the puddle, your reflection smiles at you:\n\"You got this!\"");
@@ -183,12 +185,17 @@ public class TargetMessages : MonoBehaviour
 		All.Add("Mot", "You step forward, but feel an immense wave of resistance wash over you.");
 		All.Add("MotB", "Step back.");
 
-		All.Add("DetB", "You step forward and hold your ground. Looking into the alleyway, you are able to see a bright light at the end of it.");
+		All.Add("Det", "You step forward and hold your ground. Looking into the alleyway, you are able to see a bright light at the end of it.");
 		All.Add("DetB", "You still lack something.");
 
 		All.Add("Con", "You step towards the alleyway, dreams in hand, motivated, determined, and confident. You reach out towards the light, and it materializes as a glowing bead in your hand.");
-		All.Add("ConB", "WAKE UP");
+		All.Add("ConB", "Aberrate from what is easy.\nWAKE UP");
 
+	}
+
+	public void Awake()
+	{
+		InitializeDictionary();
 	}
 
 

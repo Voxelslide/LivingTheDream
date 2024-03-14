@@ -3,21 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public class Target : MonoBehaviour, IPointerDownHandler, IDropHandler
 {
-
-	TargetMessages TM = new TargetMessages();
-
-
 	[SerializeField]
 	string targetName;
+	[SerializeField]
+	bool givesItem;
 	[SerializeField]
 	bool isDropTarget;
 	[SerializeField]
 	public GameObject desiredItem;
-	[SerializeField]
-	bool givesItem;
 
 	private bool itemGiven = false;
 
@@ -39,6 +36,15 @@ Alley							-All
 
 
  */
+
+	private TargetMessages TM;
+
+	void Awake()
+	{
+		TM = GameObject.Find("GameManager").GetComponent<TargetMessages>();
+	}
+
+
 
 	public void OnPointerDown(PointerEventData eventData)
 	{
@@ -79,7 +85,7 @@ Alley							-All
 			clickMessage = TM.All["Click"];
 			clickButtonMessage = TM.All["ClickB"];
 		}
-
+		Debug.Log("Click Message: " + clickMessage);
 		Popup.Instance.ShowPopup(clickMessage, clickButtonMessage, () => { });
 		
 	}
@@ -91,72 +97,71 @@ Alley							-All
 		{
 			//Debug.Log(dropPopupMessage);
 
-			if(eventData.pointerDrag.GetComponent<Item>().itemName == desiredItem.GetComponent<Item>().itemName)
+			if(givesItem && isDropTarget && itemGiven == false && eventData.pointerDrag.GetComponent<Item>().itemName == desiredItem.GetComponent<Item>().itemName )
 			{
-				if (givesItem && itemGiven == false && isDropTarget)
-				{
-					Debug.Log("Giving item...");
-					GiveItem();
-				}
-
-				
-
-
-
-
+				Debug.Log("Giving item...");
+				GiveItem();
 			}
-
+			string itemName = eventData.pointerDrag.GetComponent<Item>().itemName;
 
 			string dropMessage = "";
 			string dropButtonMessage = "";
 
 			if (targetName == "Dumpster")
 			{
-				dropMessage = TM.dumpster["Click"];
-				dropButtonMessage = TM.dumpster["ClickB"];
+				dropMessage = TM.dumpster[itemName];
+				dropButtonMessage = TM.dumpster[itemName + "B"];
 			}
 			else if (targetName == "TB")
 			{
-				dropMessage = TM.TB["Click"];
-				dropButtonMessage = TM.TB["ClickB"];
+				dropMessage = TM.TB[itemName];
+				dropButtonMessage = TM.TB[itemName + "B"];
 			}
 			else if (targetName == "Post")
 			{
-				dropMessage = TM.Post["Click"];
-				dropButtonMessage = TM.Post["ClickB"];
+				dropMessage = TM.Post[itemName];
+				dropButtonMessage = TM.Post[itemName + "B"];
 			}
 			else if (targetName == "ESign")
 			{
-				dropMessage = TM.ESign["Click"];
-				dropButtonMessage = TM.ESign["ClickB"];
+				dropMessage = TM.ESign[itemName];
+				dropButtonMessage = TM.ESign[itemName + "B"];
 			}
 			else if (targetName == "EThumb")
 			{
-				dropMessage = TM.EThumb["Click"];
-				dropButtonMessage = TM.EThumb["ClickB"];
+				dropMessage = TM.EThumb[itemName];
+				dropButtonMessage = TM.EThumb[itemName + "B"];
 			}
 			else if (targetName == "ETall")
 			{
-				dropMessage = TM.ETall["Click"];
-				dropButtonMessage = TM.ETall["ClickB"];
+				dropMessage = TM.ETall[itemName];
+				dropButtonMessage = TM.ETall[itemName + "B"];
 			}
 			else if (targetName == "ETalent")
 			{
-				dropMessage = TM.ETalent["Click"];
-				dropButtonMessage = TM.ETalent["ClickB"];
+				dropMessage = TM.ETalent[itemName];
+				dropButtonMessage = TM.ETalent[itemName + "B"];
 			}
 			else if (targetName == "Pud")
 			{
-				dropMessage = TM.Pud["Click"];
-				dropButtonMessage = TM.Pud["ClickB"];
+				dropMessage = TM.Pud[itemName];
+				dropButtonMessage = TM.Pud[itemName + "B"];
 			}
 			else if (targetName == "All")
 			{
-				dropMessage = TM.All["Click"];
-				dropButtonMessage = TM.All["ClickB"];
+				dropMessage = TM.All[itemName];
+				dropButtonMessage = TM.All[itemName + "B"];
 			}
 
-			Popup.Instance.ShowPopup(dropMessage, dropButtonMessage, () => { });
+			if(targetName == "All" && itemName == "Con")
+			{
+
+			}
+			else
+			{
+				Popup.Instance.ShowPopup(dropMessage, dropButtonMessage, () => { });
+
+			}
 
 		}
 	}

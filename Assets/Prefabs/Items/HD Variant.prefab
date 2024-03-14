@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2519363770600909954
+--- !u!1001 &7713245512584836857
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -37,11 +37,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 912508282690546642, guid: 1df7c325c34cb924191797e15e3a96cf, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 56
       objectReference: {fileID: 0}
     - target: {fileID: 912508282690546642, guid: 1df7c325c34cb924191797e15e3a96cf, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 56
+      objectReference: {fileID: 0}
+    - target: {fileID: 912508282690546642, guid: 1df7c325c34cb924191797e15e3a96cf, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 912508282690546642, guid: 1df7c325c34cb924191797e15e3a96cf, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 912508282690546642, guid: 1df7c325c34cb924191797e15e3a96cf, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 912508282690546642, guid: 1df7c325c34cb924191797e15e3a96cf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -73,11 +85,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 912508282690546642, guid: 1df7c325c34cb924191797e15e3a96cf, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -121.65115
+      value: -107.8
       objectReference: {fileID: 0}
     - target: {fileID: 912508282690546642, guid: 1df7c325c34cb924191797e15e3a96cf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 191
+      value: -155.6
       objectReference: {fileID: 0}
     - target: {fileID: 912508282690546642, guid: 1df7c325c34cb924191797e15e3a96cf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -91,25 +103,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 912508282690546642, guid: 1df7c325c34cb924191797e15e3a96cf, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 912508282690546643, guid: 1df7c325c34cb924191797e15e3a96cf, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 414ceda5b6b597d43a310272174e855a, type: 3}
-    - target: {fileID: 912508282690546643, guid: 1df7c325c34cb924191797e15e3a96cf, type: 3}
-      propertyPath: m_PreserveAspect
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: 65df38a005a36ab4fb8c6a79c4c69bcd, type: 3}
     - target: {fileID: 912508282690546645, guid: 1df7c325c34cb924191797e15e3a96cf, type: 3}
       propertyPath: m_Name
-      value: Mort Variant
+      value: HD
       objectReference: {fileID: 0}
     - target: {fileID: 4263675749952758501, guid: 1df7c325c34cb924191797e15e3a96cf, type: 3}
       propertyPath: image
       value: 
-      objectReference: {fileID: 21300000, guid: 414ceda5b6b597d43a310272174e855a, type: 3}
+      objectReference: {fileID: 21300000, guid: 65df38a005a36ab4fb8c6a79c4c69bcd, type: 3}
     - target: {fileID: 4263675749952758501, guid: 1df7c325c34cb924191797e15e3a96cf, type: 3}
       propertyPath: itemName
-      value: Mort
+      value: HD
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1df7c325c34cb924191797e15e3a96cf, type: 3}

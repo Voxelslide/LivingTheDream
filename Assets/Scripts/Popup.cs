@@ -32,7 +32,7 @@ public class Popup : MonoBehaviour
     btnRectTransform = btn.GetComponent<RectTransform>();
 
 
-    ShowPopup("Looking around, you can't grasp onto anything that makes sense.", "Huh...", () =>
+    ShowPopup("You feel a void in your spirit. You left something very important around here.\n[Click on inked objects to interact with them.]\n[Drag items from your inventory onto inked objects.", "Look around.", () =>
       {
         Debug.Log("BUTTON PRESSED");
       });
